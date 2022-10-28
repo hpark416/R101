@@ -26,7 +26,7 @@ float errorIntegral1 = 0; float errorIntegral2 = 0; float errorIntegral3 = 0;
 int x = 0; int y = 0; int z = 0;
 int targetPos1 = 0; int targetPos2 = 0; int targetPos3 = 0;
 int L1 = 10; int L2 = 10;
-
+char userInput;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -46,7 +46,13 @@ void loop() {
   targetPos1 = 200*sin(2*(prevT/1e6));
   targetPos2 = 400*sin(3*(prevT/1e6));
   targetPos3 = 300*sin(2*(prevT/1e6));
-
+  userInput = Serial.read();
+  if(userInput == 'u'){                
+        targetPos1 += 10;
+      }
+      if(userInput == 'd'){
+        targetPos1 -= 10;
+      }
   float kp1 = 2; float kp2 = 2; float kp3 = 2;
   float ki1 = 0; float ki2 = 0; float ki3 = 0;
   float kd1 = 0; float kd2 = 0; float kd3 = 0;

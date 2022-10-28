@@ -18,10 +18,13 @@ targetStr = StringVar()
 targetStr.set("Current Target: ")
 def up():
     print("Up Pressed")
-    ser.write(b'u')
+    ser.write(b'o')
 def down():
     print("Down Pressed")
-    ser.write(b'd')
+    ser.write(b'b')
+def stop():
+    print("stopped")
+    ser.write(b'x')
 button_up = customtkinter.CTkButton(master=app,
                                  width=120,
                                  height=32,
@@ -30,6 +33,14 @@ button_up = customtkinter.CTkButton(master=app,
                                  text="Up Button",
                                  command = up)
 button_up.place(relx=0.5, rely=0.25, anchor=tkinter.CENTER)
+button_stop = customtkinter.CTkButton(master=app,
+                                 width=120,
+                                 height=32,
+                                 border_width=0,
+                                 corner_radius=8,
+                                 text="Stop Button",
+                                 command = stop)
+button_stop.place(relx=0.7, rely=0.25, anchor=tkinter.CENTER)
 button_down = customtkinter.CTkButton(master=app,
                                  width=120,
                                  height=32,
