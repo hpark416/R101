@@ -19,28 +19,47 @@ void loop() {
   userInput = Serial.read();
 
 //now send the command to the motor
-if(userInput == 'o'){
-// setMotor1(dir1,pwr1,PWM1,PHASE1);
+if(userInput == 'u'){
 analogWrite(PWM1, 255);
 digitalWrite(PHASE1, HIGH);
 analogWrite(PWM2, 255);
 digitalWrite(PHASE2, HIGH);
-analogWrite(PWM3, 255);
-digitalWrite(PHASE3, HIGH);
 }
 
-  if(userInput == 'x'){
+  if(userInput == 's'){
 analogWrite(PWM1, 0);
 analogWrite(PWM2, 0);
 analogWrite(PWM3, 0);
   }
-if(userInput == 'b'){
+if(userInput == 'd'){
 analogWrite(PWM1, 255);
 digitalWrite(PHASE1, LOW);
 analogWrite(PWM2, 255);
 digitalWrite(PHASE2, LOW);
+
+  }
+
+if(userInput == 'r'){
+analogWrite(PWM1, 255);
+digitalWrite(PHASE1, HIGH);
+analogWrite(PWM2, 255);
+digitalWrite(PHASE2, LOW);
+
+}
+if(userInput == 'l'){
+analogWrite(PWM1, 255);
+digitalWrite(PHASE1, LOW);
+analogWrite(PWM2, 255);
+digitalWrite(PHASE2, HIGH);
+
+}
+if(userInput == 'c'){
+analogWrite(PWM3, 255);
+digitalWrite(PHASE3, HIGH);
+}
+if(userInput == 'x'){
 analogWrite(PWM3, 255);
 digitalWrite(PHASE3, LOW);
-  }
+}
 }
 
