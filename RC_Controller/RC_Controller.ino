@@ -67,13 +67,44 @@ void loop() {
   Serial.println(ch1Value);
   Serial.print(" | Ch2: ");
   Serial.println(ch2Value);
+//forward  
+  if(ch2Value > 8){
+    analogWrite(PWM3, map(ch2Value,0,100,0,230));
+    digitalWrite(PHASE3, HIGH);
+    analogWrite(PWM2, map(ch2Value,0,100,0,230));
+    digitalWrite(PHASE2, LOW);
+  }
+//backward
+  else if(ch2Value < -8){
+    analogWrite(PWM3, map(ch2Value,0,-100,0,230));
+    digitalWrite(PHASE3, LOW);
+    analogWrite(PWM2, map(ch2Value,0,-100,0,230));
+    digitalWrite(PHASE2, HIGH);
+  }
+  else{
+    //if not forward and backward, go left or right
+      if(ch1Value > 8){
+    analogWrite(PWM3, map(ch1Value,0,100,0,230));
+    digitalWrite(PHASE3, LOW);
+    analogWrite(PWM2, map(ch1Value,0,100,0,230));
+    digitalWrite(PHASE2, LOW);
+  }
+  else if(ch1Value < -8){
+    analogWrite(PWM3, map(ch1Value,0,-100,0,230));
+    digitalWrite(PHASE3, HIGH);
+    analogWrite(PWM2, map(ch1Value,0,-100,0,230));
+    digitalWrite(PHASE2, HIGH);
+  }
+ else{
+    analogWrite(PWM3, 0);
+    analogWrite(PWM2, 0);
+  }
+  }
   Serial.print(" | Ch3: ");
   Serial.println(ch3Value);
-  if(ch3Value > 0){
-    ch3Value = 0;
-  }
-  analogWrite(PWM1, ch3Value);
-  digitalWrite(PHASE1, HIGH);
+  // if(ch3Value > 0){
+  //   ch3Value = 0;
+  // }
   Serial.print(" | Ch4: ");
   Serial.println(ch4Value);
   Serial.print(" | Ch5: ");
@@ -81,5 +112,5 @@ void loop() {
   Serial.print(" | Ch6: ");
   Serial.println(ch6Value);
   
-  delay(500);
+  // delay(500);
 }
